@@ -1,6 +1,6 @@
 #include "Instruction.h"
 
-void and_reg_assm(void) {
+void or_reg_assm(void) {
 	// Checking that the op code matches
 	// strcmp(string1, string2) return 0 if they match
 	if (strcmp(OP_CODE, "OR") != 0) {
@@ -79,7 +79,7 @@ void and_reg_assm(void) {
 	state = COMPLETE_ENCODE;
 }
 
-void and_reg_bin(void) {
+void or_reg_bin(void) {
 	// Check if the op code bits match
 	// check_bits(start_bit, bit_string) returns 0 if the bit_string matches
 	//  any x will be skipped
