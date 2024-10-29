@@ -19,13 +19,13 @@ void or_reg_assm(void) {
 		return;
 	}
 
-	// This is AND register, so param 2 needs to be a register
+	// This is OR register, so param 2 needs to be a register
 	if (PARAM2.type != REGISTER) {
 		state = MISSING_REG;
 		return;
 	}
 
-	// This is AND register, so param 3 needs to be a register
+	// This is OR register, so param 3 needs to be a register
 	if (PARAM3.type != REGISTER) {
 		state = MISSING_REG;
 		return;
@@ -104,7 +104,7 @@ void or_reg_bin(void) {
 		Setting Instuciton values
 	*/
 
-	setOp("AND");
+	setOp("OR");
 	//setCond_num(cond);
 	//setParam(param_num, param_type, param_value)
 	setParam(1, REGISTER, Rd); //destination
