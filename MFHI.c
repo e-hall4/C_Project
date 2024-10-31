@@ -7,25 +7,19 @@ void mfhi_reg_assm(void) {
         return;
     }
 
+    /*
+        Checking the type of parameters
+    */
 
-    // First parameter should be a register
+    // The first parameter should be a register (destination)
     if (PARAM1.type != REGISTER) {
         state = MISSING_REG;
         return;
     }
 
-    // This is MFHI register, so param 2 needs to be a register
-    if (PARAM2.type != REGISTER) {
-        state = MISSING_REG;
-        return;
-    }
-
-    // This is MFHI register, so param 3 needs to be a register
-    if (PARAM3.type != REGISTER) {
-        state = MISSING_REG;
-        return;
-    }
-
+    /*
+        Checking the value of parameters
+    */
 
     // Rd should be 31 or less
     if (PARAM1.value > 31) {
@@ -33,56 +27,51 @@ void mfhi_reg_assm(void) {
         return;
     }
 
-    // Rs should be 31 or less
-    if (PARAM2.value > 31) {
-        state = INVALID_REG;
-        return;
-    }
+    /*
+        Putting the binary together
+    */
 
-    // Rt should be 31 or less
-    if (PARAM3.value > 31) {
-        state = INVALID_REG;
-        return;
-    }
-
-    // Set the opcode
+    // Set the opcode for R-type (always 000000)
     setBits_num(31, 0, 6);
 
-    // Set the funct 
-    setBits_str(5, "010000"); 
-    // set Rd
+    // Set the function code for MFHI (010000)
+    setBits_str(5, "010000");
+
+    // Set Rd (destination register)
     setBits_num(15, PARAM1.value, 5);
 
-    // set Rs
-    setBits_num(25, PARAM2.value, 5);
+    // Set Rs and Rt to 0, since they’re unused
+    setBits_num(25, 0, 5);  // Rs
+    setBits_num(20, 0, 5);  // Rt
 
-    // set Rt
-    setBits_num(20, PARAM3.value, 5);
+    // Set shamt to 0, as it’s unused
+    setBits_num(10, 0, 5);  // shamt
 
-    // tell the system the encoding is done
+    // Indicate that the encoding is complete
     state = COMPLETE_ENCODE;
 }
 
 void mfhi_reg_bin(void) {
-    // Check if the op code bits match
-    if (checkBits(31, "000000") != 0 && checkBits(5, "010000") != 0) {
+    // Check if the opcode and function code bits match for MFHI
+    if (checkBits(31, "000000") != 0 || checkBits(5, "010000") != 0) {
         state = WRONG_COMMAND;
         return;
     }
 
-    
+    /*
+        Finding values in the binary
+    */
+
+    // Retrieve Rd (destination register) from the binary
     uint32_t Rd = getBits(15, 5);
-    uint32_t Rs = getBits(25, 5);
-    uint32_t Rt = getBits(20, 5);
+
+    /*
+        Setting Instruction values
+    */
 
     setOp("MFHI");
-    setParam(1, REGISTER, Rd); // destination
-    setParam(2, REGISTER, Rs); // first source register operand
-    setParam(3, REGISTER, Rt); // second source register operand
+    setParam(1, REGISTER, Rd);  // Destination register
 
-    // tell the system the decoding is done
+    // Indicate that the decoding is complete
     state = COMPLETE_DECODE;
 }
-
-
-
