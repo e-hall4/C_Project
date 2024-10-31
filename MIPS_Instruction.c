@@ -260,11 +260,6 @@ void printAssm(void) {
 		}
 	}
 
-
-	if ((PARAM3.type == EMPTY)) {
-		printf(", ");
-	}
-
 	// checks param 3 and prints if it isn't empty
 	if (PARAM3.type != EMPTY) {
 		if (PARAM3.type == REGISTER && (strcmp(OP_CODE, "LW") == 0 || strcmp(OP_CODE, "SW") == 0)) {
@@ -515,13 +510,8 @@ char* readParam(char* line, struct Param* param) {
 	}
 	else if (toupper(*line) == '#') {
 		line++;
-		char imm[5] = { 0 };
-		int i = 0;
-		while (isdigit(*line)) {
-			imm[i++] = *line++;
-		}
 		param->type = IMMEDIATE;
-		param->value = atoi(imm);
+		line = immd2num(line, &param->value);
 	}
 	else {
 		state = INVALID_PARAM;
@@ -534,7 +524,7 @@ char* readParam(char* line, struct Param* param) {
 	while (*line == ' ') { line++; }
 
 	// check for comma if there wasn't one at the beginning
-	if ((strcmp(OP_CODE, "LW") == 0 || strcmp(OP_CODE, "SW") == 0)) {
+	if (strcmp(OP_CODE, "LW") == 0 || strcmp(OP_CODE, "SW") == 0 || strcmp(OP_CODE, "MFLO") == 0 || strcmp(OP_CODE, "MFHI") == 0) {
 		comma_flag = 1;
 	}
 	if ((comma_flag == 0) ) {
