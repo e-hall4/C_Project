@@ -49,8 +49,7 @@ void mult_reg_assm(void) {
     setBits_num(31, 0, 6);
 
     // Set the funct 
-    setBits_str(5, "011000"); // Assuming "011000" is the funct for MULT
-
+    setBits_str(5, "011000"); 
     // set Rd
     setBits_num(15, PARAM1.value, 5);
 
