@@ -1,4 +1,3 @@
-//Ashurs Code
 
 #include "Instruction.h"
 
