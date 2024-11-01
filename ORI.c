@@ -1,3 +1,7 @@
+/*
+	@author Wyatt Rock
+*/
+
 #include "Instruction.h"
 
 void ori_immd_assm(void) {
