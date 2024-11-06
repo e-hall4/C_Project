@@ -1,3 +1,7 @@
+/*
+    @author Wyatt Rock
+*/
+
 #include "Instruction.h"
 
 void lui_immd_assm(void) {

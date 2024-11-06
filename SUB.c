@@ -1,3 +1,7 @@
+/*
+	@author Wyatt Rock
+*/
+
 #include "Instruction.h"
 
 void sub_reg_assm(void) {
