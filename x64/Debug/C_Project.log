@@ -1,22 +1,6 @@
-﻿  ADD.c
-  ADDI.c
-  AND.c
-  ANDI.c
+﻿  ADDI.c
   BEQ.c
-  BNE.c
-  DIV.c
-  LUI.c
   LW.c
-  MFHI.c
   MFLO.c
-  MIPS_Instruction.c
-  MIPS_Interpreter.c
-  MULT.c
-  OR.c
-  ORI.c
-  SLT.c
-  SLTI.c
-  SUB.c
-  SW.c
   Generating Code...
   C_Project.vcxproj -> C:\Users\atomi\Desktop\repos\C_Project\x64\Debug\C_Project.exe
