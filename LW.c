@@ -74,9 +74,9 @@ void lw_immd_bin(void) {
 	// Extract values from binary
 
 	// getBits(start_bit, width)
-	uint32_t Rs = getBits(21, 5);
+	uint32_t Rs = getBits(25, 5);
 	uint32_t Rt = getBits(20, 5);
-	uint32_t imm16 = getBits(0, 16);
+	uint32_t imm16 = getBits(15, 16);
 
 
 	// Set instruction values
