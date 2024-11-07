@@ -57,7 +57,7 @@ void mflo_reg_assm(void) {
 
 void mflo_reg_bin(void) {
     // Check if the opcode and function code bits match for MFLO
-    if (checkBits(31, "000000") != 0 || checkBits(5, "010010") != 0) {
+    if (checkBits(31, "0000000000000000") != 0 || checkBits(10, "00000010010") != 0) {
         state = WRONG_COMMAND;
         return;
     }

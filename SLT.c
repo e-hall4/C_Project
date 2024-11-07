@@ -79,7 +79,7 @@ void slt_reg_assm(void) {
 
 void slt_reg_bin(void) {
 	// Check if the op code bits match
-	if (checkBits(31, "000000") != 0 || checkBits(5, "101010") != 0) {
+	if (checkBits(31, "000000") != 0 || checkBits(10, "00000101010") != 0) {
 		state = WRONG_COMMAND;
 		return;
 	}

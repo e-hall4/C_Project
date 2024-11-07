@@ -79,7 +79,7 @@ void div_reg_assm(void) {
 
 void div_reg_bin(void) {
 	// Check if the op code bits match
-	if (checkBits(31, "000000") != 0 || checkBits(5, "011010") != 0) {
+	if (checkBits(31, "000000") != 0 || checkBits(15, "0000000000011010") != 0) {
 		state = WRONG_COMMAND;
 		return;
 	}

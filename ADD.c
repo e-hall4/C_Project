@@ -70,7 +70,7 @@ void add_reg_assm(void) {
 
 void add_reg_bin(void) {
 	// Check if the op code bits match
-	if (checkBits(31, "000000") != 0 || checkBits(5, "100000") != 0) {
+	if (checkBits(31, "000000") != 0 || checkBits(10, "00000100000") != 0) {
 		state = WRONG_COMMAND;
 		return;
 	}

@@ -53,7 +53,7 @@ void mfhi_reg_assm(void) {
 
 void mfhi_reg_bin(void) {
     // Check if the opcode and function code bits match for MFHI
-    if (checkBits(31, "000000") != 0 || checkBits(5, "010000") != 0) {
+    if (checkBits(31, "0000000000000000") != 0 || checkBits(10, "00000010000") != 0) {
         state = WRONG_COMMAND;
         return;
     }
